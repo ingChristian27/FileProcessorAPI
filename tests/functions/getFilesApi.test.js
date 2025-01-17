@@ -6,6 +6,7 @@ import { mockFiles } from '../constants.js';
 
 describe('getFilesApi function', () => {
   let axiosGetStub;
+  const mockFilesUrl = '/path/to/mock/files';
 
   beforeEach(() => {
     axiosGetStub = sinon.stub(axiosClient, 'get');
@@ -15,9 +16,11 @@ describe('getFilesApi function', () => {
     axiosGetStub.restore();
   });
 
-  it('should return mocked file list', async () => {
+  it('should return the file list as an array from the API', async () => {
     axiosGetStub.resolves({ data: { files: mockFiles } });
-    const files = await getFilesApi();
+    const files = await getFilesApi(mockFilesUrl);
+
+    expect(files).to.be.an('array');
     expect(files).to.deep.equal(mockFiles);
   });
 });
