@@ -9,10 +9,10 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-const PATH = '/v1/secret/files';
+const PATH = '/v1/files/data';
 const MESSAGE_ERROR = 'Network error';
 
-describe('Secret API Routes', () => {
+describe('files API Routes', () => {
   let axiosGetStub;
 
   beforeEach(() => {
@@ -70,7 +70,7 @@ describe('Secret API Routes', () => {
 
     request
       .execute(app)
-      .get('/v1/secret/files')
+      .get(PATH)
       .end((error, response) => {
         if (error) done(error);
 

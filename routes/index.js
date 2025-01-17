@@ -1,8 +1,8 @@
 import express from 'express';
-import filesRouter from './secret/secret.js';
+import filesRouter from './files/files.js';
 
 const router = express.Router();
 
-router.use('/secret', filesRouter);
+router.use('/files', filesRouter);
 
 export default router;

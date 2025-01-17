@@ -7,7 +7,7 @@
  "scripts": {
     "start": "node config/server.js",  
     "dev": "nodemon config/server.js", 
-    "test": "mocha tests/**/*.test.js"
+    "test": "npx mocha tests/{apis,functions}/**/*.test.js"
   },
   "keywords": [],
   "author": "",
