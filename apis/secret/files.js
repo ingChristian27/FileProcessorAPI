@@ -1,8 +1,8 @@
+import {getFilesApi} from '../../services/files/index.js';
+
 const getFiles = async () => {
-  const files = [
-    { name: 'mockfile1', size: 100 },
-    { name: 'mockfile2', size: 200 },
-  ];
+  const files = await getFilesApi();
+
   return { response: { files } };
 };
 
