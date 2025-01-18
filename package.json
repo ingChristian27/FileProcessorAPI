@@ -5,7 +5,7 @@
   "description": "",
   "main": "config/server.js",
  "scripts": {
-    "start": "node config/server.js",  
+    "start": "NODE_ENV=production node config/server.js",
     "dev": "nodemon config/server.js", 
     "test": "npx mocha tests/{apis,functions}/**/*.test.js"
   },
