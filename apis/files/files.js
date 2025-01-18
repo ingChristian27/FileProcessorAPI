@@ -2,11 +2,15 @@ import { getFilesApi, getFileApi } from '../../services/files/index.js';
 import { formatFileData } from '../../helpers/file/index.js';
 import { allSettled } from '../../utils/index.js';
 
-const getFiles = async () => {
+const getFiles = async (data) => {
+  const { fileName } = data.query;
+
   const files = await getFilesApi();
 
+  const filteredFiles = fileName ? files.filter((file) => file.includes(fileName)) : files;
+
   const { resolved: processedFiles } = await allSettled(
-    files.map(async (file) => {
+    filteredFiles.map(async (file) => {
       try {
         const fileData = await getFileApi(file);
         const { response: formattedFileData, error: errorFormatFileData } =
