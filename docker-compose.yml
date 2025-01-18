@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  file-processor:
+    build: .
+    image: file-processor:latest
+    container_name: file-processor
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      ORIGIN_CORS: ${ORIGIN_CORS}
+      PORT: ${PORT}
+      EXTERNAL_API_BASE_URL: ${EXTERNAL_API_BASE_URL}
+      EXTERNAL_API_KEY: ${EXTERNAL_API_KEY}
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - file-network
+    restart: always
+
+networks:
+  file-network:
+    driver: bridge
